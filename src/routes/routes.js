@@ -5,17 +5,21 @@ const db = require('../libs/db.connection.js');
 const model = require('../model/task.js');
 
 router.get('/', (req, res) => {
-        model.find({}, function(err, task){
-            if(err) throw err;
-            res.render('index', {
-                title: 'crud',
-                tasks: task
-            });
-        }); 
+    res.render('index', {titulo: 'home'});
 });
 
+router.get('/ayuda', (req, res) => {
+    res.render('ayuda', {titulo: 'ayuda'});
+})
+
 router.get('/login', (req, res) => {
-    res.render('login');
+    model.find({}, function(err, task){
+        if(err) throw err;
+        res.render('login', {
+            titulo: 'login',
+            tasks: task
+        });
+    }); 
 });
 
 router.post('/add', (req, res) => {
