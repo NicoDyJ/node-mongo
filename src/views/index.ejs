@@ -8,6 +8,34 @@
     <link rel="stylesheet" href="/estilos.css">
 </head>
 <body class="cuerpo">
-    hola desde ejs
+    <h1>FORMULARIO</h1>
+    <form action="/add" method="POST">
+        <input type="text" id="title" name="title">
+        <textarea name="description" id="description" cols="30" rows="10"></textarea>
+        <button type="submit">Add</button>
+    </form>
+    <table class="tabla">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0; i < tasks.length; i++){ %> 
+            <tr>
+                <td>
+                    <strong>
+                        <%= i + 1 %> 
+                    </strong>
+                </td>
+                <td><%= tasks[0].title %> </td>
+                <td><%= tasks[0].description %> </td>
+            </tr>
+        <% } %> 
+        </tbody>
+    </table>
 </body>
 </html>
